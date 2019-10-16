@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NasaImageViewController.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class NasaImageViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
-
 }
 
+
+// MARK: - NasaImageController
+extension NasaImageViewController: NasaImageController {
+    
+}

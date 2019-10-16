@@ -28,33 +28,36 @@ class NetworkService {
 
 // MARK: - NetworkRequestable
 extension NetworkService: NetworkRequestable {
-    func getImages(_ completion: @escaping (Result<Data, Error>) -> Void) {
+    
+    func getNasaImages(_ completion: @escaping (Result<Data, Error>) -> Void) {
         
-        defaultRequest(.nasaImages) { response in
-            
-            switch response.result {
-            case .success(let data):
-                completion(.success(data))
-            case .failure(let error):
-                completion(.failure(error))
+        executionQueue.async { [weak self] in
+            self?.defaultRequest(.nasaImages) { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }
     
-    func getImage(byPath path: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
+    func downloadImage(byPath path: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
         
         guard let url = URL(string: path) else {
             print("Cant get url for get image request")
             return
         }
         
-        AF.request(url).validate().responseData { response in
-            
-            switch response.result {
-            case .success(let data):
-                completion(.success(data))
-            case .failure(let error):
-                completion(.failure(error))
+        executionQueue.async {
+            AF.request(url).validate().responseData { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }

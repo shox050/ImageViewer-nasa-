@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkRequestable {
-    func getImages(_ completion: @escaping (Result<Data, Error>) -> Void)
+    func getNasaImages(_ completion: @escaping (Result<Data, Error>) -> Void)
     
-    func getImage(byPath path: String, _ completion: @escaping (Result<Data, Error>) -> Void)
+    func downloadImage(byPath path: String, _ completion: @escaping (Result<Data, Error>) -> Void)
 }
