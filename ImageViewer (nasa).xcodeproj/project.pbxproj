@@ -10,6 +10,8 @@
 		8AB13D44BAF167259380D206 /* Pods_ImageViewer__nasa_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */; };
 		E703CEEA2357AAAB00825640 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEE92357AAAB00825640 /* ImageParser.swift */; };
 		E703CEEC2357AADE00825640 /* ImageParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEEB2357AADE00825640 /* ImageParsable.swift */; };
+		E703CEEF2357B3BE00825640 /* NasaImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEEE2357B3BE00825640 /* NasaImageCell.swift */; };
+		E703CEF22357B49000825640 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEF12357B49000825640 /* Configurable.swift */; };
 		E73399D023578CD7007C7538 /* NasaImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399CF23578CD7007C7538 /* NasaImageResponse.swift */; };
 		E73399D323578E43007C7538 /* NasaImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D223578E43007C7538 /* NasaImage.swift */; };
 		E73399D623578E9D007C7538 /* NasaImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D523578E9D007C7538 /* NasaImageConverter.swift */; };
@@ -37,6 +39,8 @@
 		96683372E125C860A37114F6 /* Pods-ImageViewer (nasa).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageViewer (nasa).release.xcconfig"; path = "Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa).release.xcconfig"; sourceTree = "<group>"; };
 		E703CEE92357AAAB00825640 /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		E703CEEB2357AADE00825640 /* ImageParsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParsable.swift; sourceTree = "<group>"; };
+		E703CEEE2357B3BE00825640 /* NasaImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageCell.swift; sourceTree = "<group>"; };
+		E703CEF12357B49000825640 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		E73399CF23578CD7007C7538 /* NasaImageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageResponse.swift; sourceTree = "<group>"; };
 		E73399D223578E43007C7538 /* NasaImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImage.swift; sourceTree = "<group>"; };
 		E73399D523578E9D007C7538 /* NasaImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageConverter.swift; sourceTree = "<group>"; };
@@ -89,9 +93,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E703CEED2357B3B400825640 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E703CEEE2357B3BE00825640 /* NasaImageCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E703CEF02357B3DE00825640 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E703CEF12357B49000825640 /* Configurable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		E73399CC23578ADF007C7538 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E703CEED2357B3B400825640 /* UI */,
 				E73399E123579A40007C7538 /* ViewModels */,
 				E73399D123578E32007C7538 /* Local */,
 				E73399CD23578AE8007C7538 /* Codable */,
@@ -216,6 +237,7 @@
 		E7A437C423573B9000A9955B /* ImageViewer (nasa) */ = {
 			isa = PBXGroup;
 			children = (
+				E703CEF02357B3DE00825640 /* Common */,
 				E73399D423578E72007C7538 /* Converters */,
 				E73399CC23578ADF007C7538 /* Models */,
 				E7E348DB2357500B00176DDB /* Network */,
@@ -405,6 +427,8 @@
 				E73399F02357A04A007C7538 /* NasaImageModel.swift in Sources */,
 				E73399EC23579B59007C7538 /* NasaImageController.swift in Sources */,
 				E7E348E12357507500176DDB /* NetworkRequestable.swift in Sources */,
+				E703CEF22357B49000825640 /* Configurable.swift in Sources */,
+				E703CEEF2357B3BE00825640 /* NasaImageCell.swift in Sources */,
 				E73399E323579A56007C7538 /* NasaImagesViewModel.swift in Sources */,
 				E703CEEC2357AADE00825640 /* ImageParsable.swift in Sources */,
 				E73399DA23578FCB007C7538 /* NasaImageConvertable.swift in Sources */,

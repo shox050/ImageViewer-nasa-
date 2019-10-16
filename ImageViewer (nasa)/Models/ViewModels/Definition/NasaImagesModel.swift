@@ -9,6 +9,9 @@
 import Foundation
 
 protocol NasaImagesModel {
+    
+    var nasaImages: [NasaImage] { get set }
+    
     func getNasaImages(_ completion: @escaping () -> Void)
     
     func downloadImageFor(nasaImage: NasaImage, _ completion: @escaping (Int) -> Void)
