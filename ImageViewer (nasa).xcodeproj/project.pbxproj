@@ -83,17 +83,17 @@
 		E73399CD23578AE8007C7538 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				E73399CE23578CB1007C7538 /* Encodable */,
+				E73399CE23578CB1007C7538 /* Decodable */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
 		};
-		E73399CE23578CB1007C7538 /* Encodable */ = {
+		E73399CE23578CB1007C7538 /* Decodable */ = {
 			isa = PBXGroup;
 			children = (
 				E73399CF23578CD7007C7538 /* NasaImageResponse.swift */,
 			);
-			path = Encodable;
+			path = Decodable;
 			sourceTree = "<group>";
 		};
 		E73399D123578E32007C7538 /* Local */ = {
@@ -153,9 +153,9 @@
 				E73399D423578E72007C7538 /* Converters */,
 				E73399CC23578ADF007C7538 /* Models */,
 				E7E348DB2357500B00176DDB /* Network */,
-				E7A437D92357495200A9955B /* Application */,
 				E7A437DA2357496300A9955B /* ViewControllers */,
 				E7A437DB2357497600A9955B /* Storyboards */,
+				E7A437D92357495200A9955B /* Application */,
 				E7A437CE23573B9600A9955B /* Assets.xcassets */,
 				E7A437D323573B9600A9955B /* Info.plist */,
 			);

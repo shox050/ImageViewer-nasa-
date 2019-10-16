@@ -7,12 +7,55 @@
 //
 
 import Foundation
+import Alamofire
 
 class NetworkService {
     
+    private let executionQueue = DispatchQueue(label: "NetworkExecutionQueue",
+                                               qos: .userInitiated,
+                                               attributes: .concurrent)
+    
+    private func defaultRequest(_ endpoint: Endpoint,
+                         _ completion: @escaping (AFDataResponse<Data>) -> Void) {
+        
+        AF.request(endpoint)
+            .validate()
+            .responseData { response in
+            completion(response)
+        }
+    }
 }
 
 // MARK: - NetworkRequestable
 extension NetworkService: NetworkRequestable {
+    func getImages(_ completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        defaultRequest(.nasaImages) { response in
+            
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
     
+    func getImage(byPath path: String, _ completion: @escaping (Result<Data, Error>) -> Void) {
+        
+        guard let url = URL(string: path) else {
+            print("Cant get url for get image request")
+            return
+        }
+        
+        AF.request(url).validate().responseData { response in
+            
+            switch response.result {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
