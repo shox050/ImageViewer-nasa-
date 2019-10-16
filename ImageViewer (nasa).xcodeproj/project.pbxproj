@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AB13D44BAF167259380D206 /* Pods_ImageViewer__nasa_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */; };
 		E7A437C623573B9000A9955B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A437C523573B9000A9955B /* AppDelegate.swift */; };
 		E7A437CA23573B9000A9955B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A437C923573B9000A9955B /* ViewController.swift */; };
 		E7A437CD23573B9000A9955B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A437CB23573B9000A9955B /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageViewer__nasa_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		729A7825066DB31E31E885AA /* Pods-ImageViewer (nasa).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageViewer (nasa).debug.xcconfig"; path = "Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa).debug.xcconfig"; sourceTree = "<group>"; };
+		96683372E125C860A37114F6 /* Pods-ImageViewer (nasa).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageViewer (nasa).release.xcconfig"; path = "Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa).release.xcconfig"; sourceTree = "<group>"; };
 		E7A437C223573B9000A9955B /* ImageViewer (nasa).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageViewer (nasa).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A437C523573B9000A9955B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7A437C923573B9000A9955B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB13D44BAF167259380D206 /* Pods_ImageViewer__nasa_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		585E7AECBE79A6956B8BD45B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				729A7825066DB31E31E885AA /* Pods-ImageViewer (nasa).debug.xcconfig */,
+				96683372E125C860A37114F6 /* Pods-ImageViewer (nasa).release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		90BB7EEBBCAA3F7063FC8477 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E7A437B923573B9000A9955B = {
 			isa = PBXGroup;
 			children = (
 				E7A437C423573B9000A9955B /* ImageViewer (nasa) */,
 				E7A437C323573B9000A9955B /* Products */,
+				585E7AECBE79A6956B8BD45B /* Pods */,
+				90BB7EEBBCAA3F7063FC8477 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +79,38 @@
 		E7A437C423573B9000A9955B /* ImageViewer (nasa) */ = {
 			isa = PBXGroup;
 			children = (
-				E7A437C523573B9000A9955B /* AppDelegate.swift */,
-				E7A437C923573B9000A9955B /* ViewController.swift */,
-				E7A437CB23573B9000A9955B /* Main.storyboard */,
+				E7A437D92357495200A9955B /* Application */,
+				E7A437DA2357496300A9955B /* ViewControllers */,
+				E7A437DB2357497600A9955B /* Storyboards */,
 				E7A437CE23573B9600A9955B /* Assets.xcassets */,
-				E7A437D023573B9600A9955B /* LaunchScreen.storyboard */,
 				E7A437D323573B9600A9955B /* Info.plist */,
 			);
 			path = "ImageViewer (nasa)";
+			sourceTree = "<group>";
+		};
+		E7A437D92357495200A9955B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				E7A437C523573B9000A9955B /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E7A437DA2357496300A9955B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E7A437C923573B9000A9955B /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E7A437DB2357497600A9955B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				E7A437CB23573B9000A9955B /* Main.storyboard */,
+				E7A437D023573B9600A9955B /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +120,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7A437D623573B9600A9955B /* Build configuration list for PBXNativeTarget "ImageViewer (nasa)" */;
 			buildPhases = (
+				3E6AC155C5051F7E35100469 /* [CP] Check Pods Manifest.lock */,
 				E7A437BE23573B9000A9955B /* Sources */,
 				E7A437BF23573B9000A9955B /* Frameworks */,
 				E7A437C023573B9000A9955B /* Resources */,
+				6F2E8B1089CA45E4CB72E973 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +180,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E6AC155C5051F7E35100469 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageViewer (nasa)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F2E8B1089CA45E4CB72E973 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E7A437BE23573B9000A9955B /* Sources */ = {
@@ -278,11 +371,13 @@
 		};
 		E7A437D723573B9600A9955B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 729A7825066DB31E31E885AA /* Pods-ImageViewer (nasa).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96BN7NSV5W;
 				INFOPLIST_FILE = "ImageViewer (nasa)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,17 +385,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "VladimirYakutin.ImageViewer--nasa-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E7A437D823573B9600A9955B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96683372E125C860A37114F6 /* Pods-ImageViewer (nasa).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 96BN7NSV5W;
 				INFOPLIST_FILE = "ImageViewer (nasa)/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "VladimirYakutin.ImageViewer--nasa-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
