@@ -42,6 +42,8 @@ extension NasaImagesViewModel: NasaImagesModel {
                     self?.nasaImages = nasaImagesResponse.compactMap { [weak self] in
                         self?.nasaImageConverter.convert($0)
                     }
+                    
+                    completion()
                 } catch let error {
                     print("Method getImages in NasaImagesViewModel got error: ", error)
                 }
@@ -51,25 +53,26 @@ extension NasaImagesViewModel: NasaImagesModel {
     
     func downloadImageFor(nasaImage: NasaImage, _ completion: @escaping (Int) -> Void) {
         
-        networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in
-            
-            switch response {
-            case .failure(let error):
-                print("Method downloadImageFor nasaImage gor error in response: ", error)
+        
+            networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in
                 
-            case .success(let data):
-                let image = self?.imageParser.parse(fromData: data)
-                
-                guard let index = self?.nasaImages.firstIndex(where: {
-                    $0.id == nasaImage.id
-                }) else {
-                    return
+                switch response {
+                case .failure(let error):
+                    print("Method downloadImageFor nasaImage gor error in response: ", error)
+                    
+                case .success(let data):
+                    let image = self?.imageParser.parse(fromData: data)
+                    
+                    guard let index = self?.nasaImages.firstIndex(where: {
+                        $0.id == nasaImage.id
+                    }) else {
+                        return
+                    }
+                    
+                    self?.nasaImages[index].image = image
+                    
+                    completion(index)
                 }
-                
-                self?.nasaImages[index].image = image
-                
-                completion(index)
-            }
         }
     }
 }

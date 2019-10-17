@@ -9,36 +9,29 @@
 import Foundation
 import Alamofire
 
-enum Endpoint {
+struct Endpoint {
     
-    static let basePath = "https://picsum.photos"
-    
-    case nasaImages
-    
-    var path: String {
-        switch self {
-        case .nasaImages:
-            return "v2/list?page=1&limit=20"
-        }
-    }
+    static let basePath = "https://picsum.photos/v2/list?page=1&limit=20"
+
 }
 
-// MARK: - URLRequestConvertible
-extension Endpoint: URLRequestConvertible {
-    func asURLRequest() throws -> URLRequest {
-        
-        let baseUrl = try Endpoint.basePath.asURL()
-        let url = baseUrl.appendingPathComponent(path)
-                
-        return URLRequest(url: url)
-    }
-    
-}
-
-
-// MARK: - URLConvertible
-extension Endpoint: URLConvertible {
-    func asURL() throws -> URL {
-        return try asURLRequest().url!
-    }
-}
+//// MARK: - URLRequestConvertible
+//extension Endpoint: URLRequestConvertible {
+//    func asURLRequest() throws -> URLRequest {
+//
+//        let baseUrl = try Endpoint.basePath.asURL()
+//        let url = baseUrl.appendingPathComponent(path)
+//        print("URL ", url)
+//
+//        return URLRequest(url: url)
+//    }
+//
+//}
+//
+//
+//// MARK: - URLConvertible
+//extension Endpoint: URLConvertible {
+//    func asURL() throws -> URL {
+//        return try asURLRequest().url!
+//    }
+//}

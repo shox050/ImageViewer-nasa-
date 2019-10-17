@@ -11,13 +11,29 @@ import UIKit
 class NasaImagesViewController: UIViewController {
     
     private let nasaImagesViewModel: NasaImagesModel = NasaImagesViewModel()
-
+    
+    @IBOutlet private weak var tvNasaImages: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        nasaImagesViewModel.getNasaImages { [weak self] in
+            
+            DispatchQueue.main.sync {
+                self?.tvNasaImages.reloadData()
+            }
+            
+            self?.nasaImagesViewModel.nasaImages.forEach { nasaImage in
+                self?.nasaImagesViewModel.downloadImageFor(nasaImage: nasaImage, { index in
+                    
+                    DispatchQueue.main.async {
+                        let indexPath = IndexPath(row: index, section: 0)
+                        self?.tvNasaImages.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                })
+            }
+        }
     }
-
-
 }
 
 

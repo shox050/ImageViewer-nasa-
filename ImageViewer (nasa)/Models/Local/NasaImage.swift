@@ -9,7 +9,7 @@
 import UIKit
 
 struct NasaImage {
-    let id: Int
+    let id: String
     let author: String
     let width: Int
     let height: Int
