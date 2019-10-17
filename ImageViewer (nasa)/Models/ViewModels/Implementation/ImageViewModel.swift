@@ -1,5 +1,5 @@
 //
-//  NasaImageViewModel.swift
+//  ImageViewModel.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class NasaImageViewModel {
+class ImageViewModel {
     
-    private var nasaImage: NasaImage!
+    private var nasaImage: Image!
     
     var image: UIImage? {
         return nasaImage.image
     }
     
-    init(_ nasaImage: NasaImage) {
+    init(_ nasaImage: Image) {
         self.nasaImage = nasaImage
     }
 }

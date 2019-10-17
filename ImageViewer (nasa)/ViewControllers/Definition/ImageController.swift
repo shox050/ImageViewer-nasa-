@@ -1,5 +1,5 @@
 //
-//  NasaImagesController.swift
+//  ImageController.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NasaImagesController {
-    
+protocol ImageController {    
+    func configure(with nasaImage: NasaImage)
 }

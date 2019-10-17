@@ -1,5 +1,5 @@
 //
-//  NasaImage.swift
+//  Image.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct NasaImage {
+struct Image {
     let id: String
     let author: String
     let width: Int

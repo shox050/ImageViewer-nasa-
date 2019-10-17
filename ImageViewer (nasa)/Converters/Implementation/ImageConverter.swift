@@ -1,5 +1,5 @@
 //
-//  NasaImageConverter.swift
+//  ImageConverter.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class NasaImageConverter: NasaImageConvertable {
+class ImageConverter: NasaImageConvertable {
     
-    func convert(_ nasaImageResponse: NasaImageResponse) -> NasaImage {
+    func convert(_ nasaImageResponse: ImageResponse) -> Image {
         let id = nasaImageResponse.id
         let author = nasaImageResponse.author
         let width = nasaImageResponse.width
         let height = nasaImageResponse.height
         let imageUrl = nasaImageResponse.imageUrl
         
-        return NasaImage(id: id,
+        return Image(id: id,
                          author: author,
                          width: width,
                          height: height,

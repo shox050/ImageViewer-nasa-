@@ -1,5 +1,5 @@
 //
-//  NasaImageViewController.swift
+//  ImageViewController.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NasaImageViewController: UIViewController {
+class ImageViewController: UIViewController {
         
-    private var nasaImageViewModel: NasaImageViewModel!
+    private var nasaImageViewModel: ImageViewModel!
     
     
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -34,7 +34,7 @@ class NasaImageViewController: UIViewController {
 }
 
 
-extension NasaImageViewController {
+extension ImageViewController {
     private func setup() {
         guard nasaImageViewModel != nil else {
             print("Error, nasaImageViewModel == nil")
@@ -46,17 +46,17 @@ extension NasaImageViewController {
 }
 
 // MARK: - NasaImageController
-extension NasaImageViewController: NasaImageController {
+extension ImageViewController: ImageController {
     
-    func configure(with nasaImage: NasaImage) {
-        nasaImageViewModel = NasaImageViewModel(nasaImage)
+    func configure(with nasaImage: Image) {
+        nasaImageViewModel = ImageViewModel(nasaImage)
         
         setup()
     }
 }
 
 // MARK: - UIScrollViewDelegate
-extension NasaImageViewController: UIScrollViewDelegate {
+extension ImageViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return ivImage
     }

@@ -1,5 +1,5 @@
 //
-//  NasaImageResponse.swift
+//  ImageResponse.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NasaImageResponse: Decodable {
+struct ImageResponse: Decodable {
     let id: String
     let author: String
     let width: Int

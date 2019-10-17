@@ -1,5 +1,5 @@
 //
-//  NasaImageCell.swift
+//  ImageCell.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NasaImageCell: UITableViewCell {
+class ImageCell: UITableViewCell {
     
     @IBOutlet private weak var ivImage: UIImageView!
     
@@ -16,10 +16,10 @@ class NasaImageCell: UITableViewCell {
 
 
 
-extension NasaImageCell: Configurable {
-    typealias DataSourceType = NasaImage
+extension ImageCell: Configurable {
+    typealias DataSourceType = Image
     
-    func configure(with dataSource: NasaImage) {
+    func configure(with dataSource: Image) {
         ivImage.image = dataSource.image
     }
 }

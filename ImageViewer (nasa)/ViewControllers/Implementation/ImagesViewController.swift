@@ -1,5 +1,5 @@
 //
-//  NasaImagesViewController .swift
+//  ImagesViewController .swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class NasaImagesViewController: UIViewController {
+class ImagesViewController: UIViewController {
     
-    private var nasaImagesViewModel = NasaImagesViewModel()
+    private var nasaImagesViewModel = ImagesViewModel()
     
     @IBOutlet private weak var tvNasaImages: UITableView!
     
@@ -22,26 +22,11 @@ class NasaImagesViewController: UIViewController {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
         tvNasaImages.addGestureRecognizer(longPressRecognizer)
         
-        nasaImagesViewModel.getNasaImages { [weak self] in
-            
-            DispatchQueue.main.sync {
-                self?.tvNasaImages.reloadData()
-            }
-            
-            self?.nasaImagesViewModel.nasaImages.forEach { nasaImage in
-                self?.nasaImagesViewModel.downloadImageFor(nasaImage: nasaImage, { index in
-                    
-                    DispatchQueue.main.sync {
-                        let indexPath = IndexPath(row: index, section: 0)
-                        self?.tvNasaImages.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                })
-            }
-        }
+        downloadImages()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destination = segue.destination as? NasaImageController else {
+        guard let destination = segue.destination as? ImageController else {
             print("failure prepare for segue: destination as NasaImageControll")
             return
         }
@@ -56,14 +41,41 @@ class NasaImagesViewController: UIViewController {
 }
 
 
+extension ImagesViewController {
+    private func downloadImages() {
+        nasaImagesViewModel.getNasaImages { [weak self] in
+            
+            DispatchQueue.main.sync {
+                self?.tvNasaImages.reloadData()
+            }
+            
+            self?.nasaImagesViewModel.nasaImages.forEach { nasaImage in
+                self?.nasaImagesViewModel.downloadImageFor(nasaImage: nasaImage, { index in
+                    
+                    DispatchQueue.main.sync {
+                        let indexPath = IndexPath(row: index, section: 0)
+                        self?.tvNasaImages.reloadRows(at: [indexPath], with: .automatic)
+                    }
+                    
+                })
+            }
+        }
+    }
+}
+
+// MARK: - ImagesController
+extension NasaImageViewController: ImagesController {
+    
+}
+
 // MARK: - UITableViewDataSource
-extension NasaImagesViewController: UITableViewDataSource {
+extension ImagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nasaImagesViewModel.nasaImages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NasaImageCell") as? NasaImageCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NasaImageCell") as? ImageCell else {
             return UITableViewCell()
         }
         
@@ -75,7 +87,7 @@ extension NasaImagesViewController: UITableViewDataSource {
 
 
 // MARK: - UITableViewDelegate
-extension NasaImagesViewController: UITableViewDelegate {
+extension ImagesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         defer {
             tableView.deselectRow(at: indexPath, animated: true)
@@ -88,7 +100,7 @@ extension NasaImagesViewController: UITableViewDelegate {
 }
 
 
-extension NasaImagesViewController {
+extension ImagesViewController {
     @objc func didLongPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.ended {
             let point = longPressGestureRecognizer.location(in: tvNasaImages)

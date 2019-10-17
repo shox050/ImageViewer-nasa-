@@ -1,5 +1,5 @@
 //
-//  NasaImagesViewModel.swift
+//  ImagesViewModel.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class NasaImagesViewModel {
+class ImagesViewModel {
     
-    var nasaImages: [NasaImage] = []
-    var selectedNasaImage: NasaImage? = nil
+    var nasaImages: [Image] = []
+    var selectedNasaImage: Image? = nil
     
     private let networkService: NetworkRequestable = NetworkService()
     private let nasaImageConverter: NasaImageConvertable = NasaImageConverter()
@@ -23,7 +23,7 @@ class NasaImagesViewModel {
 
 
 // MARK: - NasaImagesModel
-extension NasaImagesViewModel {
+extension ImagesViewModel {
     
     func getNasaImages(_ completion: @escaping () -> Void) {
         
@@ -39,7 +39,7 @@ extension NasaImagesViewModel {
                 let jsonDecoder = JSONDecoder()
                 
                 do {
-                    let nasaImagesResponse = try jsonDecoder.decode([NasaImageResponse].self, from: data)
+                    let nasaImagesResponse = try jsonDecoder.decode([ImageResponse].self, from: data)
                     
                     self?.nasaImages = nasaImagesResponse.compactMap { [weak self] in
                         self?.nasaImageConverter.convert($0)
@@ -53,7 +53,7 @@ extension NasaImagesViewModel {
         }
     }
     
-    func downloadImageFor(nasaImage: NasaImage, _ completion: @escaping (Int) -> Void) {
+    func downloadImageFor(nasaImage: Image, _ completion: @escaping (Int) -> Void) {
         
         
         networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in

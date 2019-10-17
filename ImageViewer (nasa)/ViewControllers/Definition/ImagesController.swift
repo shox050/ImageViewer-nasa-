@@ -1,5 +1,5 @@
 //
-//  NasaImageConvertable.swift
+//  ImagesController.swift
 //  ImageViewer (nasa)
 //
 //  Created by Vladimir on 16.10.2019.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NasaImageConvertable {
-    func convert(_ nasaImageResponse: NasaImageResponse) -> NasaImage
+protocol ImagesController {
+    
 }
