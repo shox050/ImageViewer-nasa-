@@ -31,7 +31,7 @@ class NasaImagesViewController: UIViewController {
             self?.nasaImagesViewModel.nasaImages.forEach { nasaImage in
                 self?.nasaImagesViewModel.downloadImageFor(nasaImage: nasaImage, { index in
                     
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         let indexPath = IndexPath(row: index, section: 0)
                         self?.tvNasaImages.reloadRows(at: [indexPath], with: .automatic)
                     }

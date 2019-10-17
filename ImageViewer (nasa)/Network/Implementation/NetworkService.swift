@@ -64,7 +64,7 @@ extension NetworkService: NetworkRequestable {
                 print("Cant get url for get image request")
                 return
             }
-            
+                        
             AF.request(url)
                 .validate()
                 .response(queue: this.executionQueue) { response in
