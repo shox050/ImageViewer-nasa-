@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol NasaImageController {
-    
+protocol NasaImageController {    
+    func configure(with nasaImage: NasaImage)
 }

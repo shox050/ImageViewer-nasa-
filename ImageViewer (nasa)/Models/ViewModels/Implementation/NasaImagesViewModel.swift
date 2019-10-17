@@ -11,6 +11,7 @@ import UIKit
 class NasaImagesViewModel {
     
     var nasaImages: [NasaImage] = []
+    var selectedNasaImage: NasaImage? = nil
     
     private let networkService: NetworkRequestable = NetworkService()
     private let nasaImageConverter: NasaImageConvertable = NasaImageConverter()
@@ -22,7 +23,7 @@ class NasaImagesViewModel {
 
 
 // MARK: - NasaImagesModel
-extension NasaImagesViewModel: NasaImagesModel {
+extension NasaImagesViewModel {
     
     func getNasaImages(_ completion: @escaping () -> Void) {
         

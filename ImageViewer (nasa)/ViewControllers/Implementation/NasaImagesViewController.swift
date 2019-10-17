@@ -10,12 +10,14 @@ import UIKit
 
 class NasaImagesViewController: UIViewController {
     
-    private var nasaImagesViewModel: NasaImagesModel = NasaImagesViewModel()
+    private var nasaImagesViewModel = NasaImagesViewModel()
     
     @IBOutlet private weak var tvNasaImages: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tvNasaImages.rowHeight = view.frame.width / 1.7
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
         tvNasaImages.addGestureRecognizer(longPressRecognizer)
@@ -37,6 +39,20 @@ class NasaImagesViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destination = segue.destination as? NasaImageController else {
+            print("failure prepare for segue: destination as NasaImageControll")
+            return
+        }
+        
+        guard let selectedNasaImage = nasaImagesViewModel.selectedNasaImage else {
+            print("seclectedNasaImage == nil")
+            return
+        }
+        
+        destination.configure(with: selectedNasaImage)
+    }
 }
 
 
@@ -54,6 +70,20 @@ extension NasaImagesViewController: UITableViewDataSource {
         cell.configure(with: nasaImagesViewModel.nasaImages[indexPath.row])
         
         return cell
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension NasaImagesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        defer {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        nasaImagesViewModel.selectedNasaImage = nasaImagesViewModel.nasaImages[indexPath.row]
+        
+        performSegue(withIdentifier: "showImageViewController", sender: self)
     }
 }
 

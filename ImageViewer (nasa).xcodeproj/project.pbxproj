@@ -18,11 +18,9 @@
 		E73399DA23578FCB007C7538 /* NasaImageConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D923578FCB007C7538 /* NasaImageConvertable.swift */; };
 		E73399E023579A35007C7538 /* NasaImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399DF23579A35007C7538 /* NasaImagesController.swift */; };
 		E73399E323579A56007C7538 /* NasaImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399E223579A56007C7538 /* NasaImagesViewModel.swift */; };
-		E73399E823579A85007C7538 /* NasaImagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399E723579A85007C7538 /* NasaImagesModel.swift */; };
 		E73399EA23579B21007C7538 /* NasaImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399E923579B21007C7538 /* NasaImageViewController.swift */; };
 		E73399EC23579B59007C7538 /* NasaImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399EB23579B59007C7538 /* NasaImageController.swift */; };
 		E73399EE2357A038007C7538 /* NasaImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399ED2357A038007C7538 /* NasaImageViewModel.swift */; };
-		E73399F02357A04A007C7538 /* NasaImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399EF2357A04A007C7538 /* NasaImageModel.swift */; };
 		E7A437C623573B9000A9955B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A437C523573B9000A9955B /* AppDelegate.swift */; };
 		E7A437CA23573B9000A9955B /* NasaImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A437C923573B9000A9955B /* NasaImagesViewController.swift */; };
 		E7A437CD23573B9000A9955B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7A437CB23573B9000A9955B /* Main.storyboard */; };
@@ -47,11 +45,9 @@
 		E73399D923578FCB007C7538 /* NasaImageConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageConvertable.swift; sourceTree = "<group>"; };
 		E73399DF23579A35007C7538 /* NasaImagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImagesController.swift; sourceTree = "<group>"; };
 		E73399E223579A56007C7538 /* NasaImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImagesViewModel.swift; sourceTree = "<group>"; };
-		E73399E723579A85007C7538 /* NasaImagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImagesModel.swift; sourceTree = "<group>"; };
 		E73399E923579B21007C7538 /* NasaImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageViewController.swift; sourceTree = "<group>"; };
 		E73399EB23579B59007C7538 /* NasaImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageController.swift; sourceTree = "<group>"; };
 		E73399ED2357A038007C7538 /* NasaImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageViewModel.swift; sourceTree = "<group>"; };
-		E73399EF2357A04A007C7538 /* NasaImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImageModel.swift; sourceTree = "<group>"; };
 		E7A437C223573B9000A9955B /* ImageViewer (nasa).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ImageViewer (nasa).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A437C523573B9000A9955B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7A437C923573B9000A9955B /* NasaImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaImagesViewController.swift; sourceTree = "<group>"; };
@@ -192,7 +188,6 @@
 		E73399E123579A40007C7538 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				E73399E523579A64007C7538 /* Definition */,
 				E73399E423579A5A007C7538 /* Implementation */,
 			);
 			path = ViewModels;
@@ -205,15 +200,6 @@
 				E73399ED2357A038007C7538 /* NasaImageViewModel.swift */,
 			);
 			path = Implementation;
-			sourceTree = "<group>";
-		};
-		E73399E523579A64007C7538 /* Definition */ = {
-			isa = PBXGroup;
-			children = (
-				E73399E723579A85007C7538 /* NasaImagesModel.swift */,
-				E73399EF2357A04A007C7538 /* NasaImageModel.swift */,
-			);
-			path = Definition;
 			sourceTree = "<group>";
 		};
 		E7A437B923573B9000A9955B = {
@@ -424,7 +410,6 @@
 				E73399E023579A35007C7538 /* NasaImagesController.swift in Sources */,
 				E7E348DF2357506000176DDB /* NetworkService.swift in Sources */,
 				E73399D023578CD7007C7538 /* NasaImageResponse.swift in Sources */,
-				E73399F02357A04A007C7538 /* NasaImageModel.swift in Sources */,
 				E73399EC23579B59007C7538 /* NasaImageController.swift in Sources */,
 				E7E348E12357507500176DDB /* NetworkRequestable.swift in Sources */,
 				E703CEF22357B49000825640 /* Configurable.swift in Sources */,
@@ -434,7 +419,6 @@
 				E73399DA23578FCB007C7538 /* NasaImageConvertable.swift in Sources */,
 				E7A437C623573B9000A9955B /* AppDelegate.swift in Sources */,
 				E73399D323578E43007C7538 /* NasaImage.swift in Sources */,
-				E73399E823579A85007C7538 /* NasaImagesModel.swift in Sources */,
 				E73399EE2357A038007C7538 /* NasaImageViewModel.swift in Sources */,
 				E7E348E32357511F00176DDB /* Endpoint.swift in Sources */,
 			);

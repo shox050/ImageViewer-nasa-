@@ -6,13 +6,17 @@
 //  Copyright © 2019 VladimirYakutin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NasaImageViewModel {
     
-}
-
-// MARK: - NasaImageModel
-extension NasaImageViewModel: NasaImageModel {
+    private var nasaImage: NasaImage!
     
+    var image: UIImage? {
+        return nasaImage.image
+    }
+    
+    init(_ nasaImage: NasaImage) {
+        self.nasaImage = nasaImage
+    }
 }
