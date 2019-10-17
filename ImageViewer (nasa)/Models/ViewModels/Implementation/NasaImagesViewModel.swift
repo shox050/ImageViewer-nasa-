@@ -15,6 +15,7 @@ class NasaImagesViewModel {
     private let networkService: NetworkRequestable = NetworkService()
     private let nasaImageConverter: NasaImageConvertable = NasaImageConverter()
     private let imageParser: ImageParsable = ImageParser()
+    private let imageQueue = DispatchQueue(label: "ImageQueue", qos: .userInitiated, attributes: .concurrent)
     
     
 }
@@ -54,25 +55,26 @@ extension NasaImagesViewModel: NasaImagesModel {
     func downloadImageFor(nasaImage: NasaImage, _ completion: @escaping (Int) -> Void) {
         
         
-            networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in
+        networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in
+            
+            switch response {
+            case .failure(let error):
+                print("Method downloadImageFor nasaImage gor error in response: ", error)
                 
-                switch response {
-                case .failure(let error):
-                    print("Method downloadImageFor nasaImage gor error in response: ", error)
-                    
-                case .success(let data):
-                    let image = self?.imageParser.parse(fromData: data)
-                    
+            case .success(let data):
+                let image = self?.imageParser.parse(fromData: data)
+                
+                
+                self?.imageQueue.async(flags: .barrier) {
                     guard let index = self?.nasaImages.firstIndex(where: {
                         $0.id == nasaImage.id
                     }) else {
                         return
                     }
-                    
                     self?.nasaImages[index].image = image
-                    
                     completion(index)
                 }
+            }
         }
     }
 }

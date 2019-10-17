@@ -10,12 +10,15 @@ import UIKit
 
 class NasaImagesViewController: UIViewController {
     
-    private let nasaImagesViewModel: NasaImagesModel = NasaImagesViewModel()
+    private var nasaImagesViewModel: NasaImagesModel = NasaImagesViewModel()
     
     @IBOutlet private weak var tvNasaImages: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
+        tvNasaImages.addGestureRecognizer(longPressRecognizer)
         
         nasaImagesViewModel.getNasaImages { [weak self] in
             
@@ -54,12 +57,20 @@ extension NasaImagesViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
-extension NasaImagesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        defer { tableView.deselectRow(at: indexPath, animated: true) }
-        
-        print()
+
+extension NasaImagesViewController {
+    @objc func didLongPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.ended {
+            let point = longPressGestureRecognizer.location(in: tvNasaImages)
+            guard let indexPath = tvNasaImages.indexPathForRow(at: point) else {
+                print("Cant get indexPath by press point")
+                return
+            }
+            print(indexPath)
+            
+            nasaImagesViewModel.nasaImages.remove(at: indexPath.row)
+            tvNasaImages.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

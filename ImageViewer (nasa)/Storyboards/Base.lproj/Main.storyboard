@@ -26,11 +26,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="259"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUb-yJ-mfa">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fUb-yJ-mfa">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="259"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="fUb-yJ-mfa" secondAttribute="height" multiplier="414:259" id="77z-ZN-cU9"/>
-                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -47,7 +44,6 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="ZeU-d0-CXg"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="dh4-zl-O9a"/>
                                 </connections>
                             </tableView>
                         </subviews>
