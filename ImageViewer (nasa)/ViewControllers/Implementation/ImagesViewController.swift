@@ -104,7 +104,6 @@ extension ImagesViewController {
                     DispatchQueue.main.sync {
                         let indexPath = IndexPath(row: index, section: 0)
                         this.tvImages.reloadRows(at: [indexPath], with: .automatic)
-                        print("Reload indexPath ", indexPath)
                     }
                 }
             }

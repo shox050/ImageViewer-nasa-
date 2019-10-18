@@ -13,7 +13,7 @@ class ImageViewController: UIViewController {
     private var imageViewModel: ImageViewModel!
     
     
-    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scContainer: UIScrollView!
     @IBOutlet private weak var ivImage: UIImageView!
         
     override func viewDidLoad() {
@@ -21,8 +21,8 @@ class ImageViewController: UIViewController {
         
         ivImage.frame = view.frame
         
-        scrollView.minimumZoomScale = Constants.minZoomScale
-        scrollView.maximumZoomScale = Constants.maxZoomScale
+        scContainer.minimumZoomScale = Constants.minZoomScale
+        scContainer.maximumZoomScale = Constants.maxZoomScale
         
         setup()
     }
