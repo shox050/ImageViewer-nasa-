@@ -14,8 +14,7 @@ class ImageCell: UITableViewCell {
     
 }
 
-
-
+// MARK: - Configurable
 extension ImageCell: Configurable {
     typealias DataSourceType = Image
     

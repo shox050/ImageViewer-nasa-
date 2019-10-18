@@ -23,7 +23,6 @@ class NetworkService {
         }
         
         AF.request(url).validate().response(queue: executionQueue) { response in
-            print("Request: ", response.request)
             completion(response)
         }
     }

@@ -111,7 +111,7 @@ extension ImagesViewController {
         }
     }
     
-    @objc func didLongPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+    @objc private func didLongPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.ended {
             let point = longPressGestureRecognizer.location(in: tvImages)
             guard let indexPath = tvImages.indexPathForRow(at: point) else {
@@ -125,7 +125,7 @@ extension ImagesViewController {
         }
     }
     
-    @objc func reachabilityDidChange(_ notification: Notification) {
+    @objc private func reachabilityDidChange(_ notification: Notification) {
         switch ReachabilityObserver.shared.isReachable {
         case false:
             presentAlert(withTitle: "Network is lost",

@@ -63,7 +63,6 @@ extension ImagesViewModel {
             case .success(let data):
                 let imageParsed = self?.imageParser.parse(fromData: data)
                 
-                
                 self?.imageQueue.async(flags: .barrier) {
                     guard let index = self?.images.firstIndex(where: {
                         $0.id == image.id
