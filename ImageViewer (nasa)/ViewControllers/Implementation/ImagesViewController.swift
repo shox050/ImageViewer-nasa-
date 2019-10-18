@@ -12,23 +12,19 @@ class ImagesViewController: FoundationViewController {
     
     private var imagesViewModel = ImagesViewModel()
     private var isFirstLaunch = true
-    
-    private let downloadImageQueue = OperationQueue()
-    
+        
     @IBOutlet private weak var tvImages: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        downloadImageQueue.maxConcurrentOperationCount = 4
-        
+                
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)),
                                                name: ReachabilityObserver.Notification.didChange.name,
                                                object: nil)
         
         ReachabilityObserver.shared.startObserving()
         
-        tvImages.rowHeight = view.frame.width / 1.7
+        tvImages.rowHeight = view.frame.width * 0.7
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
         tvImages.addGestureRecognizer(longPressRecognizer)
@@ -104,12 +100,11 @@ extension ImagesViewController {
             }
             
             this.imagesViewModel.images.forEach { image in
-                this.downloadImageQueue.addOperation {
-                    this.imagesViewModel.downloadImageFor(image: image) { index in
-                        DispatchQueue.main.sync {
-                            let indexPath = IndexPath(row: index, section: 0)
-                            this.tvImages.reloadRows(at: [indexPath], with: .automatic)
-                        }
+                this.imagesViewModel.downloadImageFor(image: image) { index in
+                    DispatchQueue.main.sync {
+                        let indexPath = IndexPath(row: index, section: 0)
+                        this.tvImages.reloadRows(at: [indexPath], with: .automatic)
+                        print("Reload indexPath ", indexPath)
                     }
                 }
             }
