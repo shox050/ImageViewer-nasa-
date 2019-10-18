@@ -10,11 +10,11 @@ import UIKit
 
 class ImagesViewModel {
     
-    var nasaImages: [Image] = []
-    var selectedNasaImage: Image? = nil
+    var images: [Image] = []
+    var selectedImage: Image? = nil
     
     private let networkService: NetworkRequestable = NetworkService()
-    private let nasaImageConverter: NasaImageConvertable = NasaImageConverter()
+    private let imageConverter: ImageConvertable = ImageConverter()
     private let imageParser: ImageParsable = ImageParser()
     private let imageQueue = DispatchQueue(label: "ImageQueue", qos: .userInitiated, attributes: .concurrent)
     
@@ -22,12 +22,11 @@ class ImagesViewModel {
 }
 
 
-// MARK: - NasaImagesModel
 extension ImagesViewModel {
     
-    func getNasaImages(_ completion: @escaping () -> Void) {
+    func getImages(_ completion: @escaping () -> Void) {
         
-        networkService.getNasaImages { [weak self] response in
+        networkService.getImages { [weak self] response in
             
             switch response {
             case .failure(let error):
@@ -39,40 +38,39 @@ extension ImagesViewModel {
                 let jsonDecoder = JSONDecoder()
                 
                 do {
-                    let nasaImagesResponse = try jsonDecoder.decode([ImageResponse].self, from: data)
+                    let imagesResponse = try jsonDecoder.decode([ImageResponse].self, from: data)
                     
-                    self?.nasaImages = nasaImagesResponse.compactMap { [weak self] in
-                        self?.nasaImageConverter.convert($0)
+                    self?.images = imagesResponse.compactMap { [weak self] in
+                        self?.imageConverter.convert($0)
                     }
                     
                     completion()
                 } catch let error {
-                    print("Method getImages in NasaImagesViewModel got error: ", error)
+                    print("Method getImages in ImagesViewModel got error: ", error)
                 }
             }
         }
     }
     
-    func downloadImageFor(nasaImage: Image, _ completion: @escaping (Int) -> Void) {
+    func downloadImageFor(image: Image, _ completion: @escaping (Int) -> Void) {
         
-        
-        networkService.downloadImage(byPath: nasaImage.imageUrl) { [weak self] response in
+        networkService.downloadImage(byPath: image.imageUrl) { [weak self] response in
             
             switch response {
             case .failure(let error):
-                print("Method downloadImageFor nasaImage gor error in response: ", error)
+                print("Method downloadImageFor image got error in response: ", error)
                 
             case .success(let data):
-                let image = self?.imageParser.parse(fromData: data)
+                let imageParsed = self?.imageParser.parse(fromData: data)
                 
                 
                 self?.imageQueue.async(flags: .barrier) {
-                    guard let index = self?.nasaImages.firstIndex(where: {
-                        $0.id == nasaImage.id
+                    guard let index = self?.images.firstIndex(where: {
+                        $0.id == image.id
                     }) else {
                         return
                     }
-                    self?.nasaImages[index].image = image
+                    self?.images[index].image = imageParsed
                     completion(index)
                 }
             }

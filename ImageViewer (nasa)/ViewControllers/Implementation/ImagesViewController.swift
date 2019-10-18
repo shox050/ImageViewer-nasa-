@@ -8,78 +8,70 @@
 
 import UIKit
 
-class ImagesViewController: UIViewController {
+class ImagesViewController: FoundationViewController {
     
-    private var nasaImagesViewModel = ImagesViewModel()
+    private var imagesViewModel = ImagesViewModel()
+    private var isFirstLaunch = true
     
-    @IBOutlet private weak var tvNasaImages: UITableView!
+    private let downloadImageQueue = OperationQueue()
+    
+    @IBOutlet private weak var tvImages: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tvNasaImages.rowHeight = view.frame.width / 1.7
+        downloadImageQueue.maxConcurrentOperationCount = 4
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)),
+                                               name: ReachabilityObserver.Notification.didChange.name,
+                                               object: nil)
+        
+        ReachabilityObserver.shared.startObserving()
+        
+        tvImages.rowHeight = view.frame.width / 1.7
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
-        tvNasaImages.addGestureRecognizer(longPressRecognizer)
+        tvImages.addGestureRecognizer(longPressRecognizer)
         
         downloadImages()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destination = segue.destination as? ImageController else {
-            print("failure prepare for segue: destination as NasaImageControll")
+            print("failure prepare for segue: destination as ImageController")
             return
         }
         
-        guard let selectedNasaImage = nasaImagesViewModel.selectedNasaImage else {
-            print("seclectedNasaImage == nil")
+        guard let selectedImage = imagesViewModel.selectedImage else {
+            print("seclectedImage == nil")
             return
         }
         
-        destination.configure(with: selectedNasaImage)
+        destination.configure(with: selectedImage)
     }
-}
-
-
-extension ImagesViewController {
-    private func downloadImages() {
-        nasaImagesViewModel.getNasaImages { [weak self] in
-            
-            DispatchQueue.main.sync {
-                self?.tvNasaImages.reloadData()
-            }
-            
-            self?.nasaImagesViewModel.nasaImages.forEach { nasaImage in
-                self?.nasaImagesViewModel.downloadImageFor(nasaImage: nasaImage, { index in
-                    
-                    DispatchQueue.main.sync {
-                        let indexPath = IndexPath(row: index, section: 0)
-                        self?.tvNasaImages.reloadRows(at: [indexPath], with: .automatic)
-                    }
-                    
-                })
-            }
-        }
+    
+    deinit {
+        ReachabilityObserver.shared.stopObserving()
     }
 }
 
 // MARK: - ImagesController
-extension NasaImageViewController: ImagesController {
+extension ImageViewController: ImagesController {
     
 }
 
 // MARK: - UITableViewDataSource
 extension ImagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nasaImagesViewModel.nasaImages.count
+        return imagesViewModel.images.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NasaImageCell") as? ImageCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as? ImageCell else {
             return UITableViewCell()
         }
         
-        cell.configure(with: nasaImagesViewModel.nasaImages[indexPath.row])
+        cell.configure(with: imagesViewModel.images[indexPath.row])
         
         return cell
     }
@@ -93,7 +85,7 @@ extension ImagesViewController: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
         }
         
-        nasaImagesViewModel.selectedNasaImage = nasaImagesViewModel.nasaImages[indexPath.row]
+        imagesViewModel.selectedImage = imagesViewModel.images[indexPath.row]
         
         performSegue(withIdentifier: "showImageViewController", sender: self)
     }
@@ -101,17 +93,60 @@ extension ImagesViewController: UITableViewDelegate {
 
 
 extension ImagesViewController {
+    
+    private func downloadImages() {
+        imagesViewModel.getImages { [weak self] in
+            
+            guard let this = self else { return }
+            
+            DispatchQueue.main.sync {
+                this.tvImages.reloadData()
+            }
+            
+            this.imagesViewModel.images.forEach { image in
+                this.downloadImageQueue.addOperation {
+                    this.imagesViewModel.downloadImageFor(image: image) { index in
+                        DispatchQueue.main.sync {
+                            let indexPath = IndexPath(row: index, section: 0)
+                            this.tvImages.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     @objc func didLongPress(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         if longPressGestureRecognizer.state == UIGestureRecognizer.State.ended {
-            let point = longPressGestureRecognizer.location(in: tvNasaImages)
-            guard let indexPath = tvNasaImages.indexPathForRow(at: point) else {
+            let point = longPressGestureRecognizer.location(in: tvImages)
+            guard let indexPath = tvImages.indexPathForRow(at: point) else {
                 print("Cant get indexPath by press point")
                 return
             }
             print(indexPath)
             
-            nasaImagesViewModel.nasaImages.remove(at: indexPath.row)
-            tvNasaImages.deleteRows(at: [indexPath], with: .fade)
+            imagesViewModel.images.remove(at: indexPath.row)
+            tvImages.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    @objc func reachabilityDidChange(_ notification: Notification) {
+        switch ReachabilityObserver.shared.isReachable {
+        case false:
+            presentAlert(withTitle: "Network is lost",
+                         message: "Data can be updated when the network will be reachable")
+        case true:
+            if isFirstLaunch == true {
+                isFirstLaunch = false
+                return
+            }
+            
+            let actionWillUpdate = UIAlertAction(title: "Update", style: .default) { [weak self] action in
+                self?.downloadImages()
+            }
+            let actionNoUpdate = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
+            presentAlert(withTitle: "Network is reachable", message: "Data can be update", actions: [actionWillUpdate, actionNoUpdate])
         }
     }
 }

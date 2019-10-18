@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8AB13D44BAF167259380D206 /* Pods_ImageViewer__nasa_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */; };
+		E7028B672359730600D2FD7A /* ReachabilityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7028B662359730600D2FD7A /* ReachabilityObserver.swift */; };
+		E7028B692359A4E300D2FD7A /* FoundationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7028B682359A4E300D2FD7A /* FoundationViewController.swift */; };
 		E703CEEA2357AAAB00825640 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEE92357AAAB00825640 /* ImageParser.swift */; };
 		E703CEEC2357AADE00825640 /* ImageParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEEB2357AADE00825640 /* ImageParsable.swift */; };
 		E703CEEF2357B3BE00825640 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E703CEEE2357B3BE00825640 /* ImageCell.swift */; };
@@ -35,6 +37,8 @@
 		12CE01B81E413812EAFE9FA7 /* Pods_ImageViewer__nasa_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageViewer__nasa_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		729A7825066DB31E31E885AA /* Pods-ImageViewer (nasa).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageViewer (nasa).debug.xcconfig"; path = "Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa).debug.xcconfig"; sourceTree = "<group>"; };
 		96683372E125C860A37114F6 /* Pods-ImageViewer (nasa).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageViewer (nasa).release.xcconfig"; path = "Target Support Files/Pods-ImageViewer (nasa)/Pods-ImageViewer (nasa).release.xcconfig"; sourceTree = "<group>"; };
+		E7028B662359730600D2FD7A /* ReachabilityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityObserver.swift; sourceTree = "<group>"; };
+		E7028B682359A4E300D2FD7A /* FoundationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationViewController.swift; sourceTree = "<group>"; };
 		E703CEE92357AAAB00825640 /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		E703CEEB2357AADE00825640 /* ImageParsable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParsable.swift; sourceTree = "<group>"; };
 		E703CEEE2357B3BE00825640 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			children = (
 				E7A437C923573B9000A9955B /* ImagesViewController.swift */,
 				E73399E923579B21007C7538 /* ImageViewController.swift */,
+				E7028B682359A4E300D2FD7A /* FoundationViewController.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			children = (
 				E7E348DD2357503F00176DDB /* Implementation */,
 				E7E348DC2357503400176DDB /* Definition */,
+				E7028B662359730600D2FD7A /* ReachabilityObserver.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -414,10 +420,12 @@
 				E7E348E12357507500176DDB /* NetworkRequestable.swift in Sources */,
 				E703CEF22357B49000825640 /* Configurable.swift in Sources */,
 				E703CEEF2357B3BE00825640 /* ImageCell.swift in Sources */,
+				E7028B692359A4E300D2FD7A /* FoundationViewController.swift in Sources */,
 				E73399E323579A56007C7538 /* ImagesViewModel.swift in Sources */,
 				E703CEEC2357AADE00825640 /* ImageParsable.swift in Sources */,
 				E73399DA23578FCB007C7538 /* ImageConvertable.swift in Sources */,
 				E7A437C623573B9000A9955B /* AppDelegate.swift in Sources */,
+				E7028B672359730600D2FD7A /* ReachabilityObserver.swift in Sources */,
 				E73399D323578E43007C7538 /* Image.swift in Sources */,
 				E73399EE2357A038007C7538 /* ImageViewModel.swift in Sources */,
 				E7E348E32357511F00176DDB /* Endpoint.swift in Sources */,

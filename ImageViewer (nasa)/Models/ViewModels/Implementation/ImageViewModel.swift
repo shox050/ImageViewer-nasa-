@@ -10,13 +10,13 @@ import UIKit
 
 class ImageViewModel {
     
-    private var nasaImage: Image!
+    private var image: Image!
     
-    var image: UIImage? {
-        return nasaImage.image
+    var picture: UIImage? {
+        return image.image
     }
     
-    init(_ nasaImage: Image) {
-        self.nasaImage = nasaImage
+    init(_ image: Image) {
+        self.image = image
     }
 }

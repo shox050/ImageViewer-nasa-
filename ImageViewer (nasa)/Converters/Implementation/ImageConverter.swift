@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ImageConverter: NasaImageConvertable {
+class ImageConverter: ImageConvertable {
     
-    func convert(_ nasaImageResponse: ImageResponse) -> Image {
-        let id = nasaImageResponse.id
-        let author = nasaImageResponse.author
-        let width = nasaImageResponse.width
-        let height = nasaImageResponse.height
-        let imageUrl = nasaImageResponse.imageUrl
+    func convert(_ imageResponse: ImageResponse) -> Image {
+        let id = imageResponse.id
+        let author = imageResponse.author
+        let width = imageResponse.width
+        let height = imageResponse.height
+        let imageUrl = imageResponse.imageUrl
         
         return Image(id: id,
                          author: author,

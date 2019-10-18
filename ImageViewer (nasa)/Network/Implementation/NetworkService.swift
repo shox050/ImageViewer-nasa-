@@ -32,13 +32,13 @@ class NetworkService {
 // MARK: - NetworkRequestable
 extension NetworkService: NetworkRequestable {
     
-    func getNasaImages(_ completion: @escaping (Result<Data, Error>) -> Void) {
+    func getImages(_ completion: @escaping (Result<Data, Error>) -> Void) {
         
         executionQueue.async { [weak self] in
             self?.defaultRequest() { response in
                 switch response.result {
                 case .success(let data):
-                    print("getNasaImages success")
+                    print("getImages success")
                     
                     guard let data = data else {
                         print("No data from success response")
@@ -47,7 +47,7 @@ extension NetworkService: NetworkRequestable {
                     
                     completion(.success(data))
                 case .failure(let error):
-                    print("getNasaImages failure")
+                    print("getImages failure")
                     completion(.failure(error))
                 }
             }

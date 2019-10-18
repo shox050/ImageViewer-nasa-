@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ImageConvertable {
-    func convert(_ nasaImageResponse: ImageResponse) -> Image
+    func convert(_ imageResponse: ImageResponse) -> Image
 }

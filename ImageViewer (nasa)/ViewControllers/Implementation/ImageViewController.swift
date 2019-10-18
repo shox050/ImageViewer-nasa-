@@ -10,7 +10,7 @@ import UIKit
 
 class ImageViewController: UIViewController {
         
-    private var nasaImageViewModel: ImageViewModel!
+    private var imageViewModel: ImageViewModel!
     
     
     @IBOutlet private weak var scrollView: UIScrollView!
@@ -36,20 +36,20 @@ class ImageViewController: UIViewController {
 
 extension ImageViewController {
     private func setup() {
-        guard nasaImageViewModel != nil else {
-            print("Error, nasaImageViewModel == nil")
+        guard imageViewModel != nil else {
+            print("Error, imageViewModel == nil")
             return
         }
         
-        ivImage?.image = nasaImageViewModel.image
+        ivImage?.image = imageViewModel.picture
     }
 }
 
-// MARK: - NasaImageController
+// MARK: - ImageController
 extension ImageViewController: ImageController {
     
-    func configure(with nasaImage: Image) {
-        nasaImageViewModel = ImageViewModel(nasaImage)
+    func configure(with image: Image) {
+        imageViewModel = ImageViewModel(image)
         
         setup()
     }

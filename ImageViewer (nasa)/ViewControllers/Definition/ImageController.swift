@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ImageController {    
-    func configure(with nasaImage: NasaImage)
+    func configure(with image: Image)
 }
