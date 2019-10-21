@@ -10,21 +10,26 @@ import UIKit
 
 class ImagesViewController: FoundationViewController {
     
+    fileprivate struct Constant {
+        static let cellIdentifier = "ImageCell"
+        static let heightRowScale: CGFloat = 0.7
+    }
+    
     private var imagesViewModel = ImagesViewModel()
     private var isFirstLaunch = true
-        
+    
     @IBOutlet private weak var tvImages: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityDidChange(_:)),
                                                name: ReachabilityObserver.Notification.didChange.name,
                                                object: nil)
         
         ReachabilityObserver.shared.startObserving()
         
-        tvImages.rowHeight = view.frame.width * 0.7
+        tvImages.rowHeight = view.frame.width * Constant.heightRowScale
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(didLongPress(longPressGestureRecognizer:)))
         tvImages.addGestureRecognizer(longPressRecognizer)
@@ -51,10 +56,6 @@ class ImagesViewController: FoundationViewController {
     }
 }
 
-// MARK: - ImagesController
-extension ImageViewController: ImagesController {
-    
-}
 
 // MARK: - UITableViewDataSource
 extension ImagesViewController: UITableViewDataSource {
@@ -63,7 +64,7 @@ extension ImagesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell") as? ImageCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constant.cellIdentifier) as? ImageCell else {
             return UITableViewCell()
         }
         
@@ -88,6 +89,7 @@ extension ImagesViewController: UITableViewDelegate {
 }
 
 
+// MARK: - Methods
 extension ImagesViewController {
     
     private func downloadImages() {
@@ -130,7 +132,7 @@ extension ImagesViewController {
             presentAlert(withTitle: "Network is lost",
                          message: "Data can be updated when the network will be reachable")
         case true:
-            if isFirstLaunch == true {
+            guard !isFirstLaunch else {
                 isFirstLaunch = false
                 return
             }

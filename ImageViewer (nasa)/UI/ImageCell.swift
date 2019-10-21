@@ -11,7 +11,6 @@ import UIKit
 class ImageCell: UITableViewCell {
     
     @IBOutlet private weak var ivImage: UIImageView!
-    
 }
 
 // MARK: - Configurable

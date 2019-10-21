@@ -10,12 +10,9 @@ import UIKit
 
 class FoundationViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
 }
 
+// MARK: - Methods
 extension FoundationViewController {
     func presentAlert(withTitle title: String,
                       message: String,

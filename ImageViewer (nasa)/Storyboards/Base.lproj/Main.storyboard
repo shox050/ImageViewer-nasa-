@@ -102,7 +102,7 @@
                     <navigationItem key="navigationItem" id="ZYN-fQ-X2M"/>
                     <connections>
                         <outlet property="ivImage" destination="ht3-vx-ZBQ" id="HaU-89-fyw"/>
-                        <outlet property="scContainer" destination="Ebh-Aq-fsa" id="nDw-A8-gMl"/>
+                        <outlet property="svContainer" destination="Ebh-Aq-fsa" id="nDw-A8-gMl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbT-Ib-Bk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

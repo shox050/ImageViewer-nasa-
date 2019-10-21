@@ -6,7 +6,7 @@
 //  Copyright © 2019 VladimirYakutin. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 class ImageConverter: ImageConvertable {
     
@@ -18,9 +18,9 @@ class ImageConverter: ImageConvertable {
         let imageUrl = imageResponse.imageUrl
         
         return Image(id: id,
-                         author: author,
-                         width: width,
-                         height: height,
-                         imageUrl: imageUrl)
+                     author: author,
+                     width: width,
+                     height: height,
+                     imageUrl: imageUrl)
     }
 }

@@ -12,8 +12,7 @@ class ImageViewController: UIViewController {
         
     private var imageViewModel: ImageViewModel!
     
-    
-    @IBOutlet private weak var scContainer: UIScrollView!
+    @IBOutlet private weak var svContainer: UIScrollView!
     @IBOutlet private weak var ivImage: UIImageView!
         
     override func viewDidLoad() {
@@ -21,19 +20,20 @@ class ImageViewController: UIViewController {
         
         ivImage.frame = view.frame
         
-        scContainer.minimumZoomScale = Constants.minZoomScale
-        scContainer.maximumZoomScale = Constants.maxZoomScale
+        svContainer.minimumZoomScale = Constant.minZoomScale
+        svContainer.maximumZoomScale = Constant.maxZoomScale
         
         setup()
     }
     
-    private struct Constants {
+    private struct Constant {
         static let minZoomScale: CGFloat = 1.0
         static let maxZoomScale: CGFloat = 7.0
     }
 }
 
 
+// MARK: - Methods
 extension ImageViewController {
     private func setup() {
         guard imageViewModel != nil else {

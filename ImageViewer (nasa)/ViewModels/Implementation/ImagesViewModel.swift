@@ -17,11 +17,10 @@ class ImagesViewModel {
     private let imageConverter: ImageConvertable = ImageConverter()
     private let imageParser: ImageParsable = ImageParser()
     private let imageQueue = DispatchQueue(label: "ImageQueue", qos: .userInitiated, attributes: .concurrent)
-    
-    
 }
 
 
+// MARK: - Methods
 extension ImagesViewModel {
     
     func getImages(_ completion: @escaping () -> Void) {
@@ -39,12 +38,11 @@ extension ImagesViewModel {
                 
                 do {
                     let imagesResponse = try jsonDecoder.decode([ImageResponse].self, from: data)
-                    
                     self?.images = imagesResponse.compactMap { [weak self] in
                         self?.imageConverter.convert($0)
                     }
-                    
                     completion()
+                    
                 } catch let error {
                     print("Method getImages in ImagesViewModel got error: ", error)
                 }

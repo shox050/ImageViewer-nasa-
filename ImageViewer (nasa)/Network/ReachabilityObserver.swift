@@ -32,6 +32,7 @@ class ReachabilityObserver {
     private(set) var isReachable = false
 }  
 
+// MARK: - Methods
 extension ReachabilityObserver {
     func startObserving() {
         manager?.startListening(onQueue: .global(), onUpdatePerforming: { [weak self] status in
@@ -40,7 +41,7 @@ extension ReachabilityObserver {
                 print("The network is not reachable")
                 self?.isReachable = false
                 self?.notify()
-            
+                
             case .reachable:
                 print("The network is reachable")
                 self?.isReachable = true

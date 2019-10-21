@@ -18,7 +18,6 @@
 		E73399D323578E43007C7538 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D223578E43007C7538 /* Image.swift */; };
 		E73399D623578E9D007C7538 /* ImageConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D523578E9D007C7538 /* ImageConverter.swift */; };
 		E73399DA23578FCB007C7538 /* ImageConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399D923578FCB007C7538 /* ImageConvertable.swift */; };
-		E73399E023579A35007C7538 /* ImagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399DF23579A35007C7538 /* ImagesController.swift */; };
 		E73399E323579A56007C7538 /* ImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399E223579A56007C7538 /* ImagesViewModel.swift */; };
 		E73399EA23579B21007C7538 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399E923579B21007C7538 /* ImageViewController.swift */; };
 		E73399EC23579B59007C7538 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73399EB23579B59007C7538 /* ImageController.swift */; };
@@ -47,7 +46,6 @@
 		E73399D223578E43007C7538 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		E73399D523578E9D007C7538 /* ImageConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConverter.swift; sourceTree = "<group>"; };
 		E73399D923578FCB007C7538 /* ImageConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageConvertable.swift; sourceTree = "<group>"; };
-		E73399DF23579A35007C7538 /* ImagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesController.swift; sourceTree = "<group>"; };
 		E73399E223579A56007C7538 /* ImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewModel.swift; sourceTree = "<group>"; };
 		E73399E923579B21007C7538 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		E73399EB23579B59007C7538 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
@@ -112,9 +110,7 @@
 		E73399CC23578ADF007C7538 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E703CEED2357B3B400825640 /* UI */,
-				E73399E123579A40007C7538 /* ViewModels */,
-				E73399D123578E32007C7538 /* Local */,
+				E73399D223578E43007C7538 /* Image.swift */,
 				E73399CD23578AE8007C7538 /* Codable */,
 			);
 			path = Models;
@@ -123,25 +119,9 @@
 		E73399CD23578AE8007C7538 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				E73399CE23578CB1007C7538 /* Decodable */,
-			);
-			path = Codable;
-			sourceTree = "<group>";
-		};
-		E73399CE23578CB1007C7538 /* Decodable */ = {
-			isa = PBXGroup;
-			children = (
 				E73399CF23578CD7007C7538 /* ImageResponse.swift */,
 			);
-			path = Decodable;
-			sourceTree = "<group>";
-		};
-		E73399D123578E32007C7538 /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				E73399D223578E43007C7538 /* Image.swift */,
-			);
-			path = Local;
+			path = Codable;
 			sourceTree = "<group>";
 		};
 		E73399D423578E72007C7538 /* Converters */ = {
@@ -184,7 +164,6 @@
 		E73399DE23579A24007C7538 /* Definition */ = {
 			isa = PBXGroup;
 			children = (
-				E73399DF23579A35007C7538 /* ImagesController.swift */,
 				E73399EB23579B59007C7538 /* ImageController.swift */,
 			);
 			path = Definition;
@@ -232,6 +211,8 @@
 				E73399D423578E72007C7538 /* Converters */,
 				E73399CC23578ADF007C7538 /* Models */,
 				E7E348DB2357500B00176DDB /* Network */,
+				E703CEED2357B3B400825640 /* UI */,
+				E73399E123579A40007C7538 /* ViewModels */,
 				E7A437DA2357496300A9955B /* ViewControllers */,
 				E7A437DB2357497600A9955B /* Storyboards */,
 				E7A437D92357495200A9955B /* Application */,
@@ -413,7 +394,6 @@
 				E7A437CA23573B9000A9955B /* ImagesViewController.swift in Sources */,
 				E73399D623578E9D007C7538 /* ImageConverter.swift in Sources */,
 				E703CEEA2357AAAB00825640 /* ImageParser.swift in Sources */,
-				E73399E023579A35007C7538 /* ImagesController.swift in Sources */,
 				E7E348DF2357506000176DDB /* NetworkService.swift in Sources */,
 				E73399D023578CD7007C7538 /* ImageResponse.swift in Sources */,
 				E73399EC23579B59007C7538 /* ImageController.swift in Sources */,

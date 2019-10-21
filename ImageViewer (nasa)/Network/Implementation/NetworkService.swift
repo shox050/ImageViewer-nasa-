@@ -12,13 +12,13 @@ import Alamofire
 class NetworkService {
     
     private let executionQueue = DispatchQueue(label: "NetworkExecutionQueue",
-                                               qos: .userInitiated,
+                                               qos: .utility,
                                                attributes: .concurrent)
     
     private func defaultRequest(_ completion: @escaping (AFDataResponse<Data?>) -> Void) {
         
         guard let url = URL(string: Endpoint.basePath) else {
-            print("Cant get url from sring")
+            print("Cant get url from string")
             return
         }
         
@@ -63,17 +63,18 @@ extension NetworkService: NetworkRequestable {
                 print("Cant get url for get image request")
                 return
             }
-                        
             AF.request(url)
                 .validate()
                 .response(queue: this.executionQueue) { response in
                 switch response.result {
                 case .success(let data):
+                    
                     guard let data = data else {
                         print("No data from success response")
                         return
                     }
                     completion(.success(data))
+                    
                 case .failure(let error):
                     completion(.failure(error))
                 }
